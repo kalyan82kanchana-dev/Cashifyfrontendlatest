@@ -114,7 +114,7 @@ docker stop cashifygcmart-test && docker rm cashifygcmart-test
 - **Build Command**: Automatically detected from Dockerfile
 
 ### Runtime Configuration
-- **Start Command**: `serve -s build -l $PORT`
+- **Start Command**: `serve -s build -p $PORT`
 - **Port**: Automatically assigned by Railway (uses `$PORT` environment variable)
 - **Health Check**: Configured to check root path (`/`)
 

@@ -44,4 +44,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:3000/ || exit 1
 
 # Start the application
-CMD ["sh", "-c", "serve -s build -l ${PORT:-3000}"]
+CMD ["sh", "-c", "serve -s build -p ${PORT:-3000}"]
