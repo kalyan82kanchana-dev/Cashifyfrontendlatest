@@ -1,0 +1,365 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Premium brand styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.premium-brand {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #1f2937;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-name {
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brand-tagline {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+
+/* Mobile touch optimization */
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Improved mobile hover states */
+@media (hover: hover) and (pointer: fine) {
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile tap states */
+@media (hover: none) and (pointer: coarse) {
+  .hover-scale:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Visible scroll-based movement */
+.scroll-move {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  will-change: transform, opacity;
+  opacity: 0.7;
+}
+
+/* Gentle floating animation for hero elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-animation {
+  animation: float 4.5s ease-in-out infinite;
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Custom gradient backgrounds */
+.gradient-pink-blue {
+  background: linear-gradient(135deg, #ec4899 0%, #3b82f6 100%);
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Custom hover effects */
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors duration-200;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  .mobile-menu {
+    @apply absolute top-16 left-0 right-0 bg-white shadow-lg border-t;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ec4899;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #db2777;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #ec4899;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #ec4899;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}/* Cache buster: Sun Sep 21 09:29:04 UTC 2025 */
+
+/* Modal animations */
+@keyframes zoom-in-95 {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.zoom-in-95 {
+  animation-name: zoom-in-95;
+}
+
+.duration-300 {
+  animation-duration: 300ms;
+}
+
+/* Hero Image Styling */
+.hero-image {
+  /* Remove/blend background effects */
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.05) saturate(1.1);
+  
+  /* Desktop optimization */
+  max-height: 450px;
+  object-fit: contain;
+  
+  /* Subtle shadow and animation */
+  transition: all 0.3s ease;
+  
+  /* Float animation */
+  animation: float 4.5s ease-in-out infinite;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .hero-image {
+    max-height: 380px;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    
+    /* Better mobile blending */
+    mix-blend-mode: normal;
+    filter: contrast(1.05) brightness(0.98) saturate(1.05);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    max-height: 320px;
+    width: 100%;
+    padding: 0 5px;
+    margin: 10px auto;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .hero-image {
+    max-height: 280px;
+    width: 100%;
+  }
+}
+
+/* Enhanced float animation for hero image */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+  }
+  50% { 
+    transform: translateY(-8px) scale(1.02); 
+  }
+}
+
+/* Hover effects for desktop */
+@media (hover: hover) and (pointer: fine) {
+  .hero-image:hover {
+    transform: translateY(-4px) scale(1.03);
+    filter: contrast(1.15) brightness(1.08) saturate(1.15);
+  }
+}
+
+/* Success Trophy Image Styling */
+.clean-image-wrapper {
+  background: transparent !important;
+  overflow: visible;
+  position: relative;
+}
+
+.success-trophy-image {
+  /* PNG optimization for your custom image */
+  background: transparent !important;
+  
+  /* Minimal processing to preserve your custom design */
+  mix-blend-mode: normal;
+  
+  /* Very light enhancement without affecting transparency */
+  filter: brightness(1.02) saturate(1.05);
+  
+  /* Desktop optimization */
+  max-height: 450px;
+  object-fit: contain;
+  
+  /* Clean styling */
+  transition: all 0.3s ease;
+  
+  /* Subtle animation */
+  animation: float 6s ease-in-out infinite;
+  
+  /* PNG specific optimization */
+  image-rendering: auto;
+  -webkit-image-smoothing: true;
+}
+
+/* Mobile responsive adjustments for trophy - BIGGER sizes */
+@media (max-width: 768px) {
+  .success-trophy-image {
+    max-height: 420px;
+    margin: 20px auto;
+    display: block;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-trophy-image {
+    max-height: 380px;
+    width: 95%;
+    margin: 20px auto;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .success-trophy-image {
+    max-height: 340px;
+    width: 90%;
+  }
+}
+
+/* Hover effects for trophy */
+@media (hover: hover) and (pointer: fine) {
+  .success-trophy-image:hover {
+    transform: translateY(-6px) scale(1.05);
+    filter: brightness(1.1) saturate(1.2);
+  }
+}
