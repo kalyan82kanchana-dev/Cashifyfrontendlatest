@@ -234,7 +234,7 @@ const FormSubmission = () => {
     
     try {
         // Get backend URL from environment
-        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+        const backendUrl = 'https://cashifybackendlatest-production.up.railway.app';
         
         // Convert file objects to base64 for JSON transmission
         const formDataWithFiles = { ...formData };
