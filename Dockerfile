@@ -7,9 +7,9 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package.json package-lock.json ./
 
-# Install dependencies with retry logic
+# Install dependencies with retry logic and legacy peer deps
 RUN npm config set registry https://registry.npmjs.org/ && \
-    npm install --production=false --retry=3 --retry-delay=1000
+    npm install --production=false --legacy-peer-deps
 
 # Copy source code
 COPY . .
