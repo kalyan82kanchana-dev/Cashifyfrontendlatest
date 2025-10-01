@@ -1,4 +1,4 @@
-# Multi-stage build for production optimization
+# Railway-optimized Dockerfile
 FROM node:20-alpine AS builder
 
 # Set working directory
@@ -7,9 +7,12 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package.json package-lock.json ./
 
-# Install dependencies with retry logic
+# Install dependencies with multiple retry strategies
 RUN npm config set registry https://registry.npmjs.org/ && \
-    npm install --production=false --retry=3 --retry-delay=1000
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set fetch-retries 5 && \
+    npm install --production=false --no-optional
 
 # Copy source code
 COPY . .
@@ -30,11 +33,10 @@ WORKDIR /app
 COPY --from=builder /app/build ./build
 
 # Create non-root user for security
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001 && \
+    chown -R nextjs:nodejs /app
 
-# Change ownership of the app directory
-RUN chown -R nextjs:nodejs /app
 USER nextjs
 
 # Expose port (Railway will set PORT environment variable)
@@ -42,7 +44,7 @@ EXPOSE 3000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/ || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
 
 # Start the application
 CMD ["sh", "-c", "serve -s build -l tcp://0.0.0.0:${PORT:-3000}"]
